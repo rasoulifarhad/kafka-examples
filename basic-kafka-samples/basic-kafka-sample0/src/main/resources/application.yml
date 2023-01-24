@@ -1,0 +1,9 @@
+logging:
+  level:
+    root: off
+    '[com.farhad]': info
+spring:
+  kafka:
+    consumer:
+      auto-offset-reset: earliest
+
