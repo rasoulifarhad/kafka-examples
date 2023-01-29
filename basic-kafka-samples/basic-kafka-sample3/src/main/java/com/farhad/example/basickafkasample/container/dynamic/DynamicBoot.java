@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Configuration
 @Slf4j
-public class Boot {
+public class DynamicBoot {
     
 
 
@@ -37,6 +37,7 @@ public class Boot {
 
         container.getContainerProperties().setMessageListener(new MyListener());
         container.getContainerProperties().setGroupId(group);
+        container.getContainerProperties().setIdleEventInterval(60_000L);
         container.setBeanName(group);
         container.start();
         return container ;
