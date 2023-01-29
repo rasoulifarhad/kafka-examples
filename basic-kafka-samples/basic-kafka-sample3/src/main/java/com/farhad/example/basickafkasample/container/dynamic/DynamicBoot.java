@@ -1,9 +1,12 @@
 package com.farhad.example.basickafkasample.container.dynamic;
 
+import static com.farhad.example.basickafkasample.container.dynamic.KafkaConstants.DYNAMIC_CONTAINER_GROUP;
+import static com.farhad.example.basickafkasample.container.dynamic.KafkaConstants.DYNAMIC_CONTAINER_TOPIC;
+import static com.farhad.example.basickafkasample.container.dynamic.KafkaConstants.DEFAULT_DYNAMIC_CONTAINER_MESSAGE;
+
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.DependsOn;
 import org.springframework.core.annotation.Order;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -22,7 +25,9 @@ public class DynamicBoot {
     public ApplicationRunner createContainer$MyListener(ConcurrentKafkaListenerContainerFactory<String,String> factory) {
 
         return args -> {
-            ConcurrentMessageListenerContainer<String,String> container =  createContainer(factory, "my-topic", "my-group");
+            ConcurrentMessageListenerContainer<String,String> container =  createContainer(factory, 
+                                                                                        DYNAMIC_CONTAINER_TOPIC,
+                                                                                        DYNAMIC_CONTAINER_GROUP);
         };
 
 
@@ -52,13 +57,11 @@ public class DynamicBoot {
         return args -> {
 
             for (int i = 0; i < 10; i++) {
-                log.info("Sending: {} ", "Message # " + i);
-                kafkaTemplate.send("my-topic","Message # " + i );
+                log.info("Sending: {} To: {}", DEFAULT_DYNAMIC_CONTAINER_MESSAGE + i,DYNAMIC_CONTAINER_TOPIC);
+                kafkaTemplate.send(DYNAMIC_CONTAINER_TOPIC,DEFAULT_DYNAMIC_CONTAINER_MESSAGE + i );
             }
         };
 
 
     }
-
-
 }

@@ -10,7 +10,7 @@ public class MyListener implements MessageListener<String,String> {
 
     @Override
     public void onMessage(ConsumerRecord<String, String> consumerRecord) {
-        log.info("Received: {}",consumerRecord.value());
+        log.info("Received: {} From: {} ",consumerRecord.value(), consumerRecord.topic());
         
     }
     
