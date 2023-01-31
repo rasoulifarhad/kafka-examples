@@ -20,6 +20,15 @@ spring:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
 
-          
-        
+runner0: 
+  enabled: false
+
+runner1: 
+  enabled: false
+
+runner2: 
+  enabled: false
+
+runner3: 
+  enabled: true
       

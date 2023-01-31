@@ -37,4 +37,11 @@ public class ReplyListener {
         log.info("UpcaseReplyListenerPayloadValue -> Reply Received: {} From: {} ", in , topic);
     }
 
+    @KafkaListener(id = SEND_TO_EXAMPLE_GROUP_3, topics = SEND_TO_EXAMPLE_TOPIC_3)
+    public void upcaseReplyListenerReturnMessage(@Payload String in,
+                                                @Header(KafkaHeaders.RECEIVED_TOPIC) String topic) {
+
+        log.info("upcaseReplyListenerReturnMessage -> Reply Received: {} From: {} ", in , topic);
+    }
+
 }
