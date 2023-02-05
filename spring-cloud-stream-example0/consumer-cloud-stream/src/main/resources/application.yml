@@ -1,0 +1,36 @@
+logging.level.org.apache.kafka.clients.consumer.internals.ConsumerCoordinator: WARN
+management:
+  endpoint:
+    web: 
+      exposure: 
+        include: beans,env,health,info,metrics,mappings
+    health:
+      show-details: always
+
+server:
+  port: 8091
+spring:
+  application:
+    name: consumer-cloud-stream
+  cloud: 
+    function:
+      definition: alert
+    stream:
+      bindings:
+        alert-in-0:
+          destination: alert.json
+          content-type: application/json
+          group: consumerCloudStreamGroup
+          consumer:
+            concurrency: 2
+      kafka:
+        binder:
+          brokers: localhost:9092
+          min-partition-count: 5
+        bindings:
+          alert-in-0:
+            consumer:
+              startOffset: latest
+
+#spring.cloud.stream.kafka.binder.auto-create-topics: false
+

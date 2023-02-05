@@ -1,0 +1,25 @@
+management:
+  endpoint:
+    web: 
+      exposure: 
+        include: beans,env,health,info,metrics,mappings
+    health:
+      show-details: always
+server:
+  port: 8090
+spring:
+  application:
+    name: producer-cloud-stream
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:9092
+      bindings:
+        alert-out-0:
+          destination: alert.json
+          content-type: application/json
+          producer:
+            partition-key-expression: headers['partitionKey']
+            partition-count: 5
+#spring.cloud.stream.kafka.binder.auto-create-topics: false
