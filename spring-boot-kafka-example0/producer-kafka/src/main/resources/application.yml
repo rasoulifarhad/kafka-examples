@@ -1,0 +1,10 @@
+server.port: 8090
+spring.application.name: producer-kafka
+spring.kafka.bootstrap-servers: localhost:9092
+spring.kafka.producer.properties.alert-topic: alert.json
+spring.kafka.producer.properties.num-partitions: 5
+
+management.endpoints.web.exposure.include: beans,env,health,info,metrics,mappings
+management.endpoint.health.show-details: always
+
+
