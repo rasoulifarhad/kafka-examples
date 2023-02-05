@@ -14,5 +14,5 @@
 #  
 ## Test 
 #
-#   curl -w'\n' localhost:8080/api/alerts -H "Content-Type: application/json"  -d '{"level":"1","message":"be careful!"}' -
+#   curl -w'\n' localhost:8090/api/alerts -H "Content-Type: application/json"  -d '{"level":"1","message":"be careful!"}' 
 #
