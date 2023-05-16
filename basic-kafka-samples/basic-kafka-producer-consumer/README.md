@@ -1,4 +1,12 @@
-## Run Sample
+## Run Sample with diferent config
+
+- ***One Partitions, One Consumers***
+
+- ***One Partitions, Two Consumers***
+
+- ***Two Partitions, Two Consumers***
+
+---
 
 ***Start Kafka***
 
