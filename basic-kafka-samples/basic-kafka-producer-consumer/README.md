@@ -153,7 +153,10 @@ $ ./mvnw spring-boot:run -Dspring-boot.run.arguments="--server.port=8081 --sprin
 ```sh
 $ curl -w'\n' -s localhost:8080/sendMessages -H "Content-Type: application/json" 
 ```
- 
+
+***Note:***
+> Now `Consumer 1` consuming the messages.
+
 **Consumer 1 logs:**
  
  ```
