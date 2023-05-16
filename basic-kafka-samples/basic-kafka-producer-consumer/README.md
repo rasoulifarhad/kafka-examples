@@ -1,4 +1,6 @@
-## Run Sample : 
+## Run Sample
+
+***Start Kafka***
 
 ```sh
 $ docker compose up -d
