@@ -9,6 +9,7 @@ import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -23,9 +24,12 @@ public class Application {
 	private static final String GROUP_ID = "my-group";
     private static final String TOPIC = "demo-topic";
 
+	static String applicationName ;
+	
 	public static void main(String[] args) {
+		
 		SpringApplication.run(Application.class, args);
-
+		
 		Properties props = new Properties();
 		props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
 		props.put(ConsumerConfig.GROUP_ID_CONFIG, GROUP_ID);
@@ -41,7 +45,7 @@ public class Application {
 		while (true) {
 			ConsumerRecords<String, String>  recorde = consumer.poll(Duration.ofMillis(100));
 			for (ConsumerRecord<String,String> record : recorde) {
-				log.info("Key: {} , Value: {} , Offset: {}", record.key(), record.value(), record.offset());
+				log.info("App: {} ,Key: {} , Value: {} , Offset: {}", applicationName, record.key(), record.value(), record.offset());
 			}
 		}
  	}
@@ -55,5 +59,10 @@ public class Application {
 					 .build();
 	 }
  
+    @Value("${spring.application.name}")
+	public void setAppName(String appName) {
+		Application.applicationName = appName;
+	}
+
 
 }
