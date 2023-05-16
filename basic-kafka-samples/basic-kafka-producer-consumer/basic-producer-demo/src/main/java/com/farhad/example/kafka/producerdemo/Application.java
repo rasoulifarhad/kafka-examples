@@ -1,6 +1,7 @@
 package com.farhad.example.kafka.producerdemo;
 
 import org.apache.kafka.clients.admin.NewTopic;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -16,10 +17,10 @@ public class Application {
 	}
 
 	@Bean
-	public NewTopic myTopic() {
+	public NewTopic myTopic(  @Value("${demo-topic.partitions}") int partitions) {
 		return TopicBuilder
 					.name(TOPIC)
-					.partitions(1)
+					.partitions(partitions)
 					.replicas(1)
 					.build();
 	}

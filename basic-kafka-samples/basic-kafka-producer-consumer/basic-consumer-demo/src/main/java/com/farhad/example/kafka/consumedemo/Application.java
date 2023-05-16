@@ -45,16 +45,17 @@ public class Application {
 		while (true) {
 			ConsumerRecords<String, String>  recorde = consumer.poll(Duration.ofMillis(100));
 			for (ConsumerRecord<String,String> record : recorde) {
-				log.info("App: {} ,Key: {} , Value: {} , Offset: {}", applicationName, record.key(), record.value(), record.offset());
+				log.info(String.format("%-10s CONSUMES [%3s,%3s] FROM  [P%-2d,O%-3s]", applicationName,  record.key(), record.value(), record.partition(), record.offset()));
+				// log.info(String.format("`{}` Consume from `P{}` at Offset `{}` : [{} , {}]", applicationName, record.partition(),  record.key(), record.value(), record.offset()));
 			}
 		}
  	}
 
 	 @Bean
-	 public NewTopic myTopic() {
+	 public NewTopic myTopic(  @Value("${demo-topic.partitions}") int partitions) {
 		 return TopicBuilder
 					 .name(TOPIC)
-					 .partitions(1)
+					 .partitions(partitions)
 					 .replicas(1)
 					 .build();
 	 }

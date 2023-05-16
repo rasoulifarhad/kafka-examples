@@ -23,7 +23,7 @@ $ docker compose up -d
 
 ```sh 
 $ cd basic-producer-demo
-$ ./mvnw spring-boot:run -Dspring-boot.run.arguments="--server.port=8080"
+$ ./mvnw spring-boot:run -Dspring-boot.run.arguments="--server.port=8080 --demo-topic.partitions=1"
 ```
    
 
@@ -31,7 +31,7 @@ $ ./mvnw spring-boot:run -Dspring-boot.run.arguments="--server.port=8080"
 
 ```sh 
 $ cd basic-consumer-demo
-$ ./mvnw spring-boot:run -Dspring-boot.run.arguments="--server.port=8081"
+$ ./mvnw spring-boot:run -Dspring-boot.run.arguments="--server.port=8081 --demo-topic.partitions=1"
 ```
 
   
@@ -52,14 +52,14 @@ $ curl -w'\n' -s localhost:8080/sendMessages -H "Content-Type: application/json"
 
 ```sh 
 $ cd basic-producer-demo
-$ ./mvnw spring-boot:run -Dspring-boot.run.arguments="--server.port=8080"
+$ ./mvnw spring-boot:run -Dspring-boot.run.arguments="--server.port=8080 --demo-topic.partitions=1"
 ```
    
 2. ***Start Consumer 1***
 
 ```sh 
 $ cd basic-consumer-demo
-$ ./mvnw spring-boot:run -Dspring-boot.run.arguments="--server.port=8081 --spring.application.name=consumer01"
+$ ./mvnw spring-boot:run -Dspring-boot.run.arguments="--server.port=8081 --spring.application.name=consumer01 --demo-topic.partitions=1"
 ```
 
 3. ***Send messages***
@@ -86,11 +86,12 @@ $ curl -w'\n' -s localhost:8080/sendMessages -H "Content-Type: application/json"
 2023-05-16 17:12:32.656  INFO 59527 --- [           main] c.f.e.kafka.consumedemo.Application      : App: consumer01 ,Key: 99 , Value: 99 , Offset: 98
 2023-05-16 17:12:32.656  INFO 59527 --- [           main] c.f.e.kafka.consumedemo.Application      : App: consumer01 ,Key: 100 , Value: 100 , Offset: 99
 ```
+
 4. ***Start Consumer 2***
 
 ```sh 
 $ cd basic-consumer-demo
-$ ./mvnw spring-boot:run -Dspring-boot.run.arguments="--server.port=8082 --spring.application.name=consumer02"
+$ ./mvnw spring-boot:run -Dspring-boot.run.arguments="--server.port=8082 --spring.application.name=consumer02 --demo-topic.partitions=1"
 ```
 
 5. ***Send messages***
@@ -153,7 +154,7 @@ $ curl -w'\n' -s localhost:8080/sendMessages -H "Content-Type: application/json"
 
 ```sh 
 $ cd basic-consumer-demo
-$ ./mvnw spring-boot:run -Dspring-boot.run.arguments="--server.port=8081 --spring.application.name=consumer01"
+$ ./mvnw spring-boot:run -Dspring-boot.run.arguments="--server.port=8081 --spring.application.name=consumer01 --demo-topic.partitions=1"
 ```
 
 9. ***Send messages***
@@ -167,8 +168,8 @@ $ curl -w'\n' -s localhost:8080/sendMessages -H "Content-Type: application/json"
 
 **Consumer 1 logs:**
  
- ```
- 2023-05-16 17:20:31.550  INFO 62495 --- [           main] c.f.e.kafka.consumedemo.Application      : App: consumer01 ,Key: 301 , Value: 301 , Offset: 300
+```
+2023-05-16 17:20:31.550  INFO 62495 --- [           main] c.f.e.kafka.consumedemo.Application      : App: consumer01 ,Key: 301 , Value: 301 , Offset: 300
 2023-05-16 17:20:31.551  INFO 62495 --- [           main] c.f.e.kafka.consumedemo.Application      : App: consumer01 ,Key: 302 , Value: 302 , Offset: 301
 2023-05-16 17:20:31.551  INFO 62495 --- [           main] c.f.e.kafka.consumedemo.Application      : App: consumer01 ,Key: 303 , Value: 303 , Offset: 302
 2023-05-16 17:20:31.551  INFO 62495 --- [           main] c.f.e.kafka.consumedemo.Application      : App: consumer01 ,Key: 304 , Value: 304 , Offset: 303
@@ -184,4 +185,90 @@ $ curl -w'\n' -s localhost:8080/sendMessages -H "Content-Type: application/json"
 
 ### Two Partitions, Two Consumers
 
+
+1. ***Start Producer***
+
+```sh 
+$ cd basic-producer-demo
+$ ./mvnw spring-boot:run -Dspring-boot.run.arguments="--server.port=8080 --demo-topic.partitions=2"
+```
+   
+2. ***Start Consumer 1***
+
+```sh 
+$ cd basic-consumer-demo
+$ ./mvnw spring-boot:run -Dspring-boot.run.arguments="--server.port=8081 --spring.application.name=consumer01 --demo-topic.partitions=2"
+```
+
+3. ***Send messages***
+
+```sh
+$ curl -w'\n' -s localhost:8080/sendMessages -H "Content-Type: application/json" 
+```
+
+**Consumer 1 log:**
+
+```
+
+```
+
+4. ***Start Consumer 2***
+
+```sh 
+$ cd basic-consumer-demo
+$ ./mvnw spring-boot:run -Dspring-boot.run.arguments="--server.port=8082 --spring.application.name=consumer02 --demo-topic.partitions=2"
+```
+
+5. ***Send messages***
+
+```sh
+$ curl -w'\n' -s localhost:8080/sendMessages -H "Content-Type: application/json" 
+```
+
+**Consumer 1 logs:**
+
+```
+
+```
+
+6. ***Stop Consumer 1***
+
+
+7. ***Send messages***
+
+```sh
+$ curl -w'\n' -s localhost:8080/sendMessages -H "Content-Type: application/json" 
+```
+
+**Consumer 2 logs:**
+
+```
+
+
+```
+
+***Note:***
+> Now `Consumer 2` consuming the messages.
+
+8. ***Start Consumer 1***
+
+```sh 
+$ cd basic-consumer-demo
+$ ./mvnw spring-boot:run -Dspring-boot.run.arguments="--server.port=8081 --spring.application.name=consumer01 --demo-topic.partitions=2"
+```
+
+9. ***Send messages***
+
+```sh
+$ curl -w'\n' -s localhost:8080/sendMessages -H "Content-Type: application/json" 
+```
+
+***Note:***
+> Now `Consumer 1` consuming the messages.
+
+**Consumer 1 logs:**
+ 
+```
+
+```
 
