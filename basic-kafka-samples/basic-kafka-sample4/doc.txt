@@ -1,0 +1,64 @@
+## Serializers in Apache Kafka
+#
+# Serialization is the process of converting objects into bytes. Deserialization is the inverse process — converting 
+# a stream of bytes into an object. 
+#
+## Custom Serializers
+#
+# Apac#  he Kafka provides a pre-built serializer and deserializer for several basic types:
+#  
+#  - StringSerializer
+#  - ShortSerializer
+#  - IntegerSerializer
+#  - LongSerializer
+#  - DoubleSerializer
+#  - BytesSerializer
+#  
+# But it also offers the capability to implement custom (de)serializers. In order to serialize our own objects, we'll implement the 
+# Serializer interface. Similarly, to create a custom deserializer, we'll implement the Deserializer interface. 
+#
+#
+#	                                                   ┌─────────────────┐                                                          
+#    ┌────────────────────┐                                │                 │                                  ┌────────────────────┐
+#    │    Application     │          ┌────────────┐        │                 │          ┌──────────────┐        │    Application     │
+#    │                    │   Data   │   Custom   │ Bytes  │   ┌─────────┐   │ Bytes    │    Custom    │ Data   │                    │
+#    │ ┌────────────────┐ ├────────> │ Serializer ├────────┼──>│  Topic  ├───┼────────> │ Deserializer ├───────>│ ┌────────────────┐ ├ 
+#    │ │ Kafka Producer │ │          └────────────┘        │   └─────────┘   │          └──────────────┘        │ │ Kafka Consumer │ │ 
+#    │ └────────────────┘ │                                │                 │                                  │ └────────────────┘ │
+#    └────────────────────┘                                │                 │                                  └────────────────────┘
+#                                                          │                 │
+#                                                          │                 │
+#                                                          │ Kafka Cluster   │
+#                                                          │                 │
+#                                                          └─────────────────┘ 
+#
+#
+#                
+#
+#
+#                
+#
+#
+#                
+#
+#
+#                
+#
+#
+#                
+#
+#
+#                
+#
+#
+#                
+#
+#
+#                
+#
+#
+#                
+#
+#
+#                
+
