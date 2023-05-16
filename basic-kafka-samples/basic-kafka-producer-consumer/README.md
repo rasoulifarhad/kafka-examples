@@ -182,3 +182,6 @@ $ curl -w'\n' -s localhost:8080/sendMessages -H "Content-Type: application/json"
 2023-05-16 17:20:31.566  INFO 62495 --- [           main] c.f.e.kafka.consumedemo.Application      : App: consumer01 ,Key: 400 , Value: 400 , Offset: 399
 ```
 
+### Two Partitions, Two Consumers
+
+
