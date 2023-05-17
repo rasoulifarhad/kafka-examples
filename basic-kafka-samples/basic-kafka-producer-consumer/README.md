@@ -1,4 +1,4 @@
-## Run Sample with diferent config
+## Run Sample with different config
 
 - ***One Partitions, One Consumers***
 
@@ -23,7 +23,8 @@ $ docker compose up -d
 
 ```sh 
 $ cd basic-producer-demo
-$ ./mvnw spring-boot:run -Dspring-boot.run.arguments="--server.port=8080 --demo-topic.partitions=1"
+$ ./mvnw spring-boot:run \
+   -Dspring-boot.run.arguments="--server.port=8080 --demo-topic.partitions=1"
 ```
    
 
@@ -52,14 +53,16 @@ $ curl -w'\n' -s localhost:8080/sendMessages -H "Content-Type: application/json"
 
 ```sh 
 $ cd basic-producer-demo
-$ ./mvnw spring-boot:run -Dspring-boot.run.arguments="--server.port=8080 --demo-topic.partitions=1"
+$ ./mvnw spring-boot:run \
+   -Dspring-boot.run.arguments="--server.port=8080 --demo-topic.partitions=1"
 ```
    
 2. ***Start Consumer 1***
 
 ```sh 
 $ cd basic-consumer-demo
-$ ./mvnw spring-boot:run -Dspring-boot.run.arguments="--server.port=8081 --spring.application.name=consumer01 --demo-topic.partitions=1"
+$ ./mvnw spring-boot:run \
+    -Dspring-boot.run.arguments="--server.port=8081 --spring.application.name=consumer01 --demo-topic.partitions=1"
 ```
 
 3. ***Send messages***
@@ -91,7 +94,8 @@ $ curl -w'\n' -s localhost:8080/sendMessages -H "Content-Type: application/json"
 
 ```sh 
 $ cd basic-consumer-demo
-$ ./mvnw spring-boot:run -Dspring-boot.run.arguments="--server.port=8082 --spring.application.name=consumer02 --demo-topic.partitions=1"
+$ ./mvnw spring-boot:run \
+   -Dspring-boot.run.arguments="--server.port=8082 --spring.application.name=consumer02 --demo-topic.partitions=1"
 ```
 
 5. ***Send messages***
@@ -154,7 +158,8 @@ $ curl -w'\n' -s localhost:8080/sendMessages -H "Content-Type: application/json"
 
 ```sh 
 $ cd basic-consumer-demo
-$ ./mvnw spring-boot:run -Dspring-boot.run.arguments="--server.port=8081 --spring.application.name=consumer01 --demo-topic.partitions=1"
+$ ./mvnw spring-boot:run \
+   -Dspring-boot.run.arguments="--server.port=8081 --spring.application.name=consumer01 --demo-topic.partitions=1"
 ```
 
 9. ***Send messages***
@@ -190,14 +195,16 @@ $ curl -w'\n' -s localhost:8080/sendMessages -H "Content-Type: application/json"
 
 ```sh 
 $ cd basic-producer-demo
-$ ./mvnw spring-boot:run -Dspring-boot.run.arguments="--server.port=8080 --demo-topic.partitions=2"
+$ ./mvnw spring-boot:run \
+   -Dspring-boot.run.arguments="--server.port=8080 --demo-topic.partitions=2"
 ```
    
 2. ***Start Consumer 1***
 
 ```sh 
 $ cd basic-consumer-demo
-$ ./mvnw spring-boot:run -Dspring-boot.run.arguments="--server.port=8081 --spring.application.name=consumer01 --demo-topic.partitions=2"
+$ ./mvnw spring-boot:run \
+   -Dspring-boot.run.arguments="--server.port=8081 --spring.application.name=consumer01 --demo-topic.partitions=2"
 ```
 
 3. ***Send messages***
@@ -238,7 +245,8 @@ $ curl -w'\n' -s localhost:8080/sendMessages -H "Content-Type: application/json"
 
 ```sh 
 $ cd basic-consumer-demo
-$ ./mvnw spring-boot:run -Dspring-boot.run.arguments="--server.port=8082 --spring.application.name=consumer02 --demo-topic.partitions=2"
+$ ./mvnw spring-boot:run \
+   -Dspring-boot.run.arguments="--server.port=8082 --spring.application.name=consumer02 --demo-topic.partitions=2"
 ```
 
 5. ***Send messages***
@@ -338,7 +346,8 @@ $ curl -w'\n' -s localhost:8080/sendMessages -H "Content-Type: application/json"
 
 ```sh 
 $ cd basic-consumer-demo
-$ ./mvnw spring-boot:run -Dspring-boot.run.arguments="--server.port=8081 --spring.application.name=consumer01 --demo-topic.partitions=2"
+$ ./mvnw spring-boot:run \
+   -Dspring-boot.run.arguments="--server.port=8081 --spring.application.name=consumer01 --demo-topic.partitions=2"
 ```
 
 9. ***Send messages***
