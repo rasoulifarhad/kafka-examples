@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.farhad.example</groupId>
-	<artifactId>basic-kafka-request-reply</artifactId>
+	<artifactId>kafka-request-reply</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>basic-kafka-request-reply</name>
+	<name>kafka-request-reply</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
