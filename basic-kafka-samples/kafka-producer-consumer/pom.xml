@@ -3,9 +3,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
      <modelVersion>4.0.0</modelVersion>
     <groupId>com.farhad.example.kafka</groupId>
-    <artifactId>basic-kafka-producer-consumer</artifactId>
+    <artifactId>kafka-producer-consumer</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>basic-kafka-producer-consumer</name>
+    <name>kafka-producer-consumer</name>
     <packaging>pom</packaging>
 	
     <modules>
